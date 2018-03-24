@@ -1,0 +1,8 @@
+#[[
+#if defined _]]#${NAME}#[[_included
+  #endinput
+#endif
+#define _]]#${NAME}#[[_included
+]]#
+
+//...

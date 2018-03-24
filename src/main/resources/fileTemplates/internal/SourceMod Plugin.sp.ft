@@ -1,0 +1,14 @@
+#[[
+#include <sourcemod>
+]]#
+public Plugin myinfo = {
+    name = "My Plugin",
+    author = "${USER}",
+    description = "",
+    version = "",
+    url = ""
+};
+
+public void OnPluginStart() {
+    //...
+}

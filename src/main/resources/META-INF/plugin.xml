@@ -1,0 +1,74 @@
+<!DOCTYPE idea-plugin PUBLIC "Plugin/DTD" "http://plugins.intellij.net/plugin.dtd">
+<idea-plugin>
+    <id>net.alliedmods.lang.sourcepawn</id>
+    <name>SourcePawn Language</name>
+    <vendor url="https://alliedmods.net/">AlliedModders</vendor>
+
+    <description><![CDATA[
+        <p>Support for the <a href="https://github.com/alliedmodders/sourcepawn">SourcePawn Language</a>.</p>
+        <p>Project available on <a href="https://github.com/collinsmith/intellij-sourcepawn/">Github</a>.</p>
+    ]]></description>
+
+    <change-notes><![CDATA[
+    ]]>
+    </change-notes>
+
+    <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
+    <idea-version since-build="173" until-build="181.*"/>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+        <fileTypeFactory implementation="net.alliedmods.lang.sourcepawn.SpFileTypeFactory"/>
+        <configurationType implementation="net.alliedmods.lang.sourcepawn.run.SpRunConfigurationType"/>
+        <lang.parserDefinition language="SourcePawn" implementationClass="net.alliedmods.lang.sourcepawn.SpParserDefinition"/>
+        <lang.syntaxHighlighterFactory language="SourcePawn" implementationClass="net.alliedmods.lang.sourcepawn.highlighter.SpSyntaxHighlighterFactory"/>
+        <colorSettingsPage implementation="net.alliedmods.lang.sourcepawn.page.SpColorSettingsPage"/>
+
+        <!-- module -->
+        <sdkType implementation="net.alliedmods.lang.sourcepawn.sdk.SpSdkType"/>
+        <moduleType id="SpModule" implementationClass="net.alliedmods.lang.sourcepawn.module.SpModuleType"/>
+        <moduleBuilder id="SpModuleBuilder" builderClass="net.alliedmods.lang.sourcepawn.module.SpModuleBuilder"/>
+
+        <!-- templates -->
+        <internalFileTemplate name="SourceMod Plugin"/>
+        <internalFileTemplate name="SourceMod Include"/>
+    </extensions>
+
+    <application-components>
+        <!-- Add your application components here -->
+    </application-components>
+
+    <actions>
+        <!-- Add your actions here -->
+        <group id="SourcePawn.Group.NewFile">
+            <add-to-group group-id="NewGroup" anchor="before" relative-to-action="NewFile"/>
+            <action id="SourcePawn.NewScript"
+                    class="net.alliedmods.lang.sourcepawn.action.CreateSpScriptAction"
+                    text="SourceMod Plugin" description="Creates a new SourceMod plugin file">
+            </action>
+            <action id="SourcePawn.NewInclude"
+                    class="net.alliedmods.lang.sourcepawn.action.CreateSpIncludeAction"
+                    text="SourceMod Include" description="Creates a new SourceMod include file">
+            </action>
+            <separator/>
+        </group>
+        <group id="SourcePawn.Group.Compile">
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="first"/>
+            <add-to-group group-id="ScopeViewPopupMenu" anchor="first"/>
+            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+            <action class="net.alliedmods.lang.sourcepawn.action.CompileAction"
+                    text="Compile Plugin"
+                    id="SourcePawn.Compile"
+                    icon="/actions/compile.png">
+                <keyboard-shortcut first-keystroke="shift c" keymap="$default"/>
+            </action>
+            <separator/>
+        </group>
+    </actions>
+</idea-plugin>
