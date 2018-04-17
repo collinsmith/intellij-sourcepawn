@@ -2,6 +2,7 @@ package net.alliedmods.lang.sourcepawn.psi.stub;
 
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.StubBuilder;
+import com.intellij.psi.impl.java.stubs.StubPsiFactory;
 import com.intellij.psi.stubs.DefaultStubBuilder;
 import com.intellij.psi.stubs.PsiFileStub;
 import com.intellij.psi.stubs.StubElement;
@@ -57,5 +58,8 @@ public interface PsiSpFileStub extends PsiFileStub<PsiSpFile> {
       }
     };
   }
+
+  StubPsiFactory getPsiFactory();
+  void setPsiFactory(StubPsiFactory factory);
 
 }

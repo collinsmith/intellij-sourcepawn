@@ -9,7 +9,7 @@ import net.alliedmods.lang.sourcepawn.psi.preprocessor.PsiIncludeStatement;
 import net.alliedmods.lang.sourcepawn.psi.preprocessor.PsiSpFileReference;
 
 public class PsiIncludeStatementImpl
-    //extends SpStubPsiElement<PsiIncludeStatementStub>
+    extends SpStubPsiElement<PsiIncludeStatementStub>
     implements PsiIncludeStatement {
 
   public PsiIncludeStatementImpl(ASTNode node) {
