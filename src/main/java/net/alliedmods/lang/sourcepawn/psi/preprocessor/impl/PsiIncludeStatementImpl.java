@@ -5,8 +5,10 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.impl.source.tree.ChildRole;
 import com.intellij.psi.util.PsiUtilCore;
 
+import net.alliedmods.lang.sourcepawn.psi.SpStubPsiElement;
 import net.alliedmods.lang.sourcepawn.psi.preprocessor.PsiIncludeStatement;
 import net.alliedmods.lang.sourcepawn.psi.preprocessor.PsiSpFileReference;
+import net.alliedmods.lang.sourcepawn.psi.preprocessor.stub.PsiIncludeStatementStub;
 
 public class PsiIncludeStatementImpl
     extends SpStubPsiElement<PsiIncludeStatementStub>
