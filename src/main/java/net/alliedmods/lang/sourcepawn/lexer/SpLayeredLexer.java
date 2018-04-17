@@ -17,12 +17,14 @@ public class SpLayeredLexer extends LayeredLexer {
   private final Lexer spPreprocessorLexer;
 
   public SpLayeredLexer() {
-    super(new SpLexer());
-    this.spLexer = (Lexer) getDelegate();
-    this.spPreprocessorLexer = new SpPreprocessorLexer();
-    registerSelfStoppingLayer(spPreprocessorLexer, SpElementTypes.SP_PREPROCESSOR_DIRECTIVES.getTypes(), IElementType.EMPTY_ARRAY);
+    this(new SpPreprocessorLexer());
   }
 
-
+  public SpLayeredLexer(@NotNull SpPreprocessorLexer preprocessorLexer) {
+    super(new SpLexer());
+    this.spLexer = (Lexer) getDelegate();
+    this.spPreprocessorLexer = preprocessorLexer;
+    registerSelfStoppingLayer(spPreprocessorLexer, SpElementTypes.SP_PREPROCESSOR_DIRECTIVES.getTypes(), IElementType.EMPTY_ARRAY);
+  }
 
 }

@@ -54,6 +54,7 @@ public abstract class SpCommandLexer extends LexerBase {
       return iterator.offset;
     }
 
+    int offset = bufferStartOffset;
     char c = charAt(offset);
     while (isWhitespace(c)) {
       offset++;

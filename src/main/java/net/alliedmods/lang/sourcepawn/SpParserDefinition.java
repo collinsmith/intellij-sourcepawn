@@ -18,10 +18,8 @@ import com.intellij.psi.tree.TokenSet;
 import net.alliedmods.lang.sourcepawn.lexer.SpLayeredLexer;
 import net.alliedmods.lang.sourcepawn.lexer.SpLexer;
 import net.alliedmods.lang.sourcepawn.lexer.SpPreprocessorLexer;
-import net.alliedmods.lang.sourcepawn.lexer.SpTokenTypes;
 import net.alliedmods.lang.sourcepawn.psi.SpElementTypes;
 import net.alliedmods.lang.sourcepawn.psi.impl.PsiSpFileImpl;
-import net.alliedmods.lang.sourcepawn.psi.stub.SpStubElementTypes;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -38,8 +36,7 @@ public class SpParserDefinition implements ParserDefinition {
   public static Lexer createLayeredLexer() {
     SpLexer spLexer = createLexer();
     SpPreprocessorLexer spPreprocessorLexer = spLexer.createPreprocessorLexer();
-    SpLayeredLexer lexer = new SpLayeredLexer(spLexer, spPreprocessorLexer,
-        TokenSet.create(SpTokenTypes.PREPROCESSOR_DIRECTIVE));
+    SpLayeredLexer lexer = new SpLayeredLexer(spPreprocessorLexer);
     return lexer;
   }
 
@@ -76,7 +73,7 @@ public class SpParserDefinition implements ParserDefinition {
 
   @Override
   public IFileElementType getFileNodeType() {
-    return SpStubElementTypes.SP_FILE;
+    return FILE;
   }
 
   @NotNull

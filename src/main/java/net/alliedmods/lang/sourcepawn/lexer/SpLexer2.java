@@ -199,7 +199,7 @@ public class SpLexer2 extends LexerBase {
   }
 
   private static char parseChar(int flags) {
-
+    return 0;
   }
 
   private void locateFlexToken() {
